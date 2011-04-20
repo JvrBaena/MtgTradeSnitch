@@ -12,6 +12,7 @@ gem 'nifty-generators'
 gem 'haml'
 gem 'formtastic'
 gem 'nokogiri'
+gem 'heroku'
 
 # Use unicorn as the web server
 # gem 'unicorn'

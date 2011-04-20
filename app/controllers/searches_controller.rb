@@ -38,7 +38,7 @@ class SearchesController < ApplicationController
 				props ={}
 				tr.children.each do |td|
 					props[cols[0]] = td.at_css('.horListItem  a').content if td.at_css('.horListItem a').present?
-					props[cols[1]] = td.at_css('a .icon').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if td.at_css('a .icon').present?
+					props[cols[1]] = td.at_css('a .icon').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if (td.at_css('a .icon').present? && td.at_css('a .icon').has_attribute?("onmouseover"))
 					props[cols[2]] = td.at_css('.flagIcon').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if td.at_css('.flagIcon').present?
 					props[cols[3]] = td.xpath('img[@src="http://serv1.tcgimages.eu/img/foil.png"]').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if td.xpath('img[@src="http://serv1.tcgimages.eu/img/foil.png"]').present?
 					props[cols[4]] = td.xpath('img[@src="http://serv1.tcgimages.eu/img/signed.png"]').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if td.xpath('img[@src="http://serv1.tcgimages.eu/img/signed.png"]').present?
