@@ -1,0 +1,5 @@
+== MtgTradeSnitch
+
+App que permite consultar precios en MKM y obtiene la información mediante scrap.
+Está pensado como proyecto de aprendizaje de scraping, y además funciona como una API!
+(devuelve json).

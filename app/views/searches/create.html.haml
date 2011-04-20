@@ -1,0 +1,7 @@
+%h3
+  = @query.to_s.capitalize
+%dl
+  - @links.each do |link|
+    %dd
+      = link
+= link_to "New Search", :root

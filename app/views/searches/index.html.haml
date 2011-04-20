@@ -1,0 +1,36 @@
+%h3
+  = @query
+%h1= "Sin resultados" if !@several.present? && @prices.empty? 
+= render 'search'
+- if @several.present?
+  %table
+    %tr
+      %th Card
+      %th Expansion
+      %th Rarity
+      %th
+    - @versions.each do |version|
+      -if !version.empty? #De este scrapeo viene uno vacio siempre!
+        %tr
+          %td= version["card"]
+          %td= version["expansion"]
+          %td= version["rarity"]
+          %td= link_to "Ver precios",searches_path(:url => version["link"])
+-else
+  -if !@several.present? && !@prices.empty?
+    %table
+      %tr
+        %th Seller
+        %th Condition
+        %th Language
+        %th Foil?
+        %th Price
+      - @prices.each do |price|
+        %tr
+          %td= price["seller"]
+          %td= price["condition"]
+          %td= price["lang"]
+          %td= price["foil"].present? ? "Yes" : "No"
+          %td= price["price"]
+      .img_container
+        = image_tag @img

@@ -1,0 +1,7 @@
+= form_tag searches_path, :method => :get do
+  %dl
+    %dd
+      = label_tag "Search for"
+      = text_field_tag :query, ''
+    %dd
+      = submit_tag "Search"
