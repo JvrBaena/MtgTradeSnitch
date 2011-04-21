@@ -1,0 +1,21 @@
+%h3
+  = @query
+%h1= "Precio Medio: #{@average}" if @average.present?
+= render 'search'
+- if @several.present?
+  %table
+    %tr
+      %th Card
+      %th Expansion
+      %th Rarity
+      %th
+      %th
+    - @versions.each do |version|
+      -if !version.empty? #De este scrapeo viene uno vacio siempre!
+        %tr
+          %td= version["card"]
+          %td= version["expansion"]
+          %td= version["rarity"]
+          %td= link_to "Precio medio",average_card_path(:url => version["link"])
+.img_container
+  = image_tag @img if @img.present?

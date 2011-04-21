@@ -24,7 +24,9 @@ MtgTradeSnitch::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-  resources :searches
+  resources :searches, :path=>"cards", :as =>"cards" do
+	get :average, :on => :member
+  end
   # Sample resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

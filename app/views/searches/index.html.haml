@@ -15,7 +15,7 @@
           %td= version["card"]
           %td= version["expansion"]
           %td= version["rarity"]
-          %td= link_to "Ver precios",searches_path(:url => version["link"])
+          %td= link_to "Ver precios",cards_path(:url => version["link"])
 -else
   -if !@several.present? && !@prices.empty?
     %table
@@ -34,3 +34,4 @@
           %td= price["price"]
       .img_container
         = image_tag @img
+        = link_to "Precio Medio", average_card_path(:id=> @query.gsub(/\((.*?)\)/,''))
