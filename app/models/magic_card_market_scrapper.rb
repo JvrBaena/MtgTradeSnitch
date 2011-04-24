@@ -29,7 +29,7 @@ class MagicCardMarketScrapper
 					props[cols[2]] = td.at_css('.flagIcon').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if td.at_css('.flagIcon').present?
 					props[cols[3]] = td.xpath('img[@src="http://serv1.tcgimages.eu/img/foil.png"]').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if td.xpath('img[@src="http://serv1.tcgimages.eu/img/foil.png"]').present?
 					props[cols[4]] = td.xpath('img[@src="http://serv1.tcgimages.eu/img/signed.png"]').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if td.xpath('img[@src="http://serv1.tcgimages.eu/img/signed.png"]').present?
-					props[cols[5]] = td.content if td.has_attribute?("class") && (td["class"] == "alignRight nowrap" || td["class"] == "alignRight nowrap topRow" || td["class"] == "alignRight nowrap bottomRow")
+					props[cols[5]] = td.content if td.has_attribute?("class") && (td["class"] == "alignRight nowrap" || td["class"] == "alignRight nowrap topRow" || td["class"] == "alignRight nowrap bottomRow" || td["class"] == "alignRight nowrap topRow bottomRow")
 				end
 				props
 			end

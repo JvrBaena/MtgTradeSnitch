@@ -63,8 +63,16 @@ td {
   .error_messages ul {
     margin: 0; }
 
+table.results{
+  float:left;
+  marging: 0 10px;
+}
+
 div .img_container{
-  float:right;
-  margin-right:150px;
-  margin-top: -100px;
+  float:left;
+
+}
+
+dd {
+  float:left;
 }

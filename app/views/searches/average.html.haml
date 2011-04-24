@@ -2,8 +2,10 @@
   = @query
 %h1= "Precio Medio: #{@average}" if @average.present?
 = render 'search'
+-if !@average.present?
+  .clear 
 - if @several.present?
-  %table
+  %table.results
     %tr
       %th Card
       %th Expansion
@@ -19,3 +21,4 @@
           %td= link_to "Precio medio",average_card_path(:url => version["link"])
 .img_container
   = image_tag @img if @img.present?
+.clear

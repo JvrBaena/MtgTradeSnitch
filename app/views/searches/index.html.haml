@@ -2,8 +2,9 @@
   = @query
 %h1= "Sin resultados" if !@several.present? && @prices.empty? 
 = render 'search'
+.clear
 - if @several.present?
-  %table
+  %table.results
     %tr
       %th Card
       %th Expansion
@@ -16,9 +17,10 @@
           %td= version["expansion"]
           %td= version["rarity"]
           %td= link_to "Ver precios",cards_path(:url => version["link"])
+  .clear
 -else
   -if !@several.present? && !@prices.empty?
-    %table
+    %table.results
       %tr
         %th Seller
         %th Condition
@@ -32,6 +34,7 @@
           %td= price["lang"]
           %td= price["foil"].present? ? "Yes" : "No"
           %td= price["price"]
-      .img_container
-        = image_tag @img
-        = link_to "Precio Medio", average_card_path(:id=> @query.gsub(/\((.*?)\)/,''))
+  .img_container
+    = image_tag @img
+    = link_to "Precio Medio", average_card_path(:id=> @query.gsub(/\((.*?)\)/,''))
+  .clear
