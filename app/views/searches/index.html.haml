@@ -36,5 +36,5 @@
           %td= price["price"]
   .img_container
     = image_tag @img
-    = link_to "Precio Medio", average_card_path(:id=> @query.gsub(/\((.*?)\)/,''))
+    = link_to "Precio Medio", average_card_path(:id=> @query.gsub(/\((.*?)\)/,'')) if @query.present?
   .clear
