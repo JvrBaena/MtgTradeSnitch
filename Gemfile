@@ -14,6 +14,7 @@ gem 'formtastic'
 gem 'nokogiri'
 gem 'anemone'
 gem 'heroku'
+gem 'fastercsv'
 
 # Use unicorn as the web server
 # gem 'unicorn'

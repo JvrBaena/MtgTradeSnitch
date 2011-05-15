@@ -36,6 +36,7 @@ GEM
     configuration (1.2.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    fastercsv (1.5.4)
     formtastic (1.2.3)
       actionpack (>= 2.3.7)
       activesupport (>= 2.3.7)
@@ -90,6 +91,7 @@ PLATFORMS
 
 DEPENDENCIES
   anemone
+  fastercsv
   formtastic
   haml
   heroku

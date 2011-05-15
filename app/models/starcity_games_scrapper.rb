@@ -1,19 +1,18 @@
 require 'anemone'
 require 'open-uri'
+require 'csv'
 
-
- def test4
+ def crawl
 	 root = Nokogiri::HTML(open("http://sales.starcitygames.com/singlecategories.php"))
 	 ediciones = root.css('td td div[align="center"]>a').collect{|e| e.attribute("href").value}
-	 fichero = File.open("cartas.txt", "w") do |file|
+	 fichero = CSV.open("cartas.csv", "w") do |file|
 		 hilos = []
 		 5.times do #5 tentáculos a ver si lo aguanta starcitygames
 			 hilos << Thread.new{
 				while ediciones.any?
 					tentaculo ediciones.pop, file
 				end
-			 }
-			 
+			 }			 
 		 end
 		 
 		 hilos.each do |t|
@@ -41,7 +40,7 @@ def tentaculo(url , output)
 			condition = carta.at_css('a[href="http://sales.starcitygames.com//cardconditions.php"]')
 			puts condition.content
 			
-			output.puts "Carta: "+title.content+"\t"+"Precio: "+price.content+"\t"+"Expansion: "+exp.content+"\t"+"condition"+condition.content
+			output << [title.content, price.content, exp.content, condition.content]
 		end
 	end
 	
@@ -66,8 +65,7 @@ def tentaculo(url , output)
 				condition = carta.at_css('a[href="http://sales.starcitygames.com//cardconditions.php"]')
 				puts condition.content
 				
-				output.puts "Carta: "+title.content+"\t"+"Precio: "+price.content+"\t"+"Expansion: "+exp.content+"\t"+"condition"+condition.content
-				
+				output << [title.content, price.content, exp.content, condition.content]				
 			end
 		end
 		
@@ -75,6 +73,6 @@ def tentaculo(url , output)
 	end
 end
  
-test4
+crawl
 
 #category.php\?(t=a)?&cat=\d+(&letter=.|&start=\d+)?     td td div a
