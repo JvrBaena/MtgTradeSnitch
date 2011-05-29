@@ -29,6 +29,13 @@ class SearchesController < ApplicationController
 					render :json => @average
 				end
 			end
+			format.xml do
+				if @several.present?
+					render :xml => {:versions => @versions}
+				else
+					render :xml => {:average => @average, :img => @img}
+				end
+			end
 		end
 	end
 	
