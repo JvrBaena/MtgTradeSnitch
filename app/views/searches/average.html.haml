@@ -1,6 +1,8 @@
 %h3
   = @query
 %h1= "Precio Medio: #{@average}" if @average.present?
+%h1= "Precio Medio Foil: #{@average_foil}" if @average_foil.present?
+
 = render 'search'
 -if !@average.present?
   .clear 
