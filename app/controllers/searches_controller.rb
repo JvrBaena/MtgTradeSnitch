@@ -31,12 +31,15 @@ class SearchesController < ApplicationController
 		     nonfoils+=1
 	     end
 			end
+      
+      @average = nonfoils != 0 ? @average/nonfoils : 0 
+			@average_foil = foils != 0 ? @average_foil/foils : 0  
 
-			@average = @average/nonfoils
-			@average_foil = @average_foil/foils
-			
 			@average = (@average * 100).round.to_f / 100
 			@average_foil = (@average_foil * 100).round.to_f / 100
+			
+			@average = "N/A" if @average == 0.0
+			@average_foil = "N/A" if @average_foil == 0.0
 			
 		end
 		respond_to do |format|
