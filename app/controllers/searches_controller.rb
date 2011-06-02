@@ -66,7 +66,7 @@ class SearchesController < ApplicationController
 		if(params[:url].present?)
 			doc = Nokogiri::HTML(open("http://www.magiccardmarket.eu/#{CGI.escape(params[:url])}"))
 		else
-			doc = Nokogiri::HTML(open("http://www.magiccardmarket.eu/?mainPage=showSearchResult&searchFor=#{CGI.escape (params[:query])}&searchSingles=Y"))
+			doc = Nokogiri::HTML(open("http://www.magiccardmarket.eu/?mainPage=showSearchResult&searchFor=#{CGI.escape (params[:query].gsub(/\//,' '))}&searchSingles=Y"))
 		end
 		
 		result = MagicCardMarketScrapper.search(doc)
@@ -75,6 +75,7 @@ class SearchesController < ApplicationController
 		@versions = result["versions"]
 		@prices = result["prices"]
 		@query = result["query"]
+		@query = @query.gsub(/\//,' ') if @query
 		@img = result["img"]
 		
 		
