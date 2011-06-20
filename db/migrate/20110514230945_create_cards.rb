@@ -1,15 +1,10 @@
 class CreateCards < ActiveRecord::Migration
   def self.up
-    create_table :shops do |t|
-      t.string :name
-      t.timestamps
-    end
     create_table :cards do |t|
       t.string :card
-      t.string :expansion
-      t.string :price
-      t.string :condition
-      t.references :shop
+      t.string :url
+      t.string :average_nonfoil
+      t.string :average_foil
       t.timestamps
     end
   end

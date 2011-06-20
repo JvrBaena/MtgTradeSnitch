@@ -19,7 +19,7 @@ class MagicCardMarketScrapper
 			result["several"]= several
 			result["versions"]= versions
 		else
-			cols = %w[seller condition lang foil signed price]
+			cols = %w[seller condition lang foil signed price comments]
 			trs = doc.css('tr .hoverator')
 			prices = trs.collect do |tr|
 				props ={}
@@ -30,6 +30,8 @@ class MagicCardMarketScrapper
 					props[cols[3]] = td.xpath('img[@src="http://serv1.tcgimages.eu/img/foil.png"]').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if td.xpath('img[@src="http://serv1.tcgimages.eu/img/foil.png"]').present?
 					props[cols[4]] = td.xpath('img[@src="http://serv1.tcgimages.eu/img/signed.png"]').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if td.xpath('img[@src="http://serv1.tcgimages.eu/img/signed.png"]').present?
 					props[cols[5]] = td.content if td.has_attribute?("class") && (td["class"] == "alignRight nowrap" || td["class"] == "alignRight nowrap topRow" || td["class"] == "alignRight nowrap bottomRow" || td["class"] == "alignRight nowrap topRow bottomRow")
+					props[cols[6]] = td.content if !td.has_attribute?("class") || td["class"] == "topRow" || td["class"] == "bottomRow" || td["class"] == "topRow bottomRow"
+
 				end
 				props
 			end

@@ -10,27 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110514230945) do
+ActiveRecord::Schema.define(:version => 20110620191716) do
 
   create_table "cards", :force => true do |t|
     t.string   "card"
-    t.string   "expansion"
-    t.string   "price"
-    t.string   "condition"
-    t.integer  "shop_id"
+    t.string   "url"
+    t.string   "average_nonfoil"
+    t.string   "average_foil"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "magic_card_market_scrappers", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "shops", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
 end
