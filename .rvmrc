@@ -1,1 +1,1 @@
-rvm --create use default@mtgtradesnitch > /dev/null
+rvm --create use 1.8.7@mtgtradesnitch > /dev/null
