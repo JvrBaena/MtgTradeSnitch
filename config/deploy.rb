@@ -15,7 +15,6 @@ role :app, domain
 role :web, domain
 role :db, domain, :primary => true
 set :branch, 'master'
-set :rails_env, 'pre'
 default_run_options[:pty] = true
 
 

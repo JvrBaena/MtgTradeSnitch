@@ -15,7 +15,7 @@ gem 'anemone'
 gem 'heroku'
 gem 'fastercsv'
 gem 'paperclip'
-
+gem 'rake', '0.9.2'
 # Use unicorn as the web server
 # gem 'unicorn'
 
