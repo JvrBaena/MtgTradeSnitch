@@ -102,7 +102,7 @@ class SearchesController < ApplicationController
 				if @several.present?
 					render :xml => {:versions => @versions}
 				else
-					render :xml => {:average => @average , :img => card.pic.path, :average_foil => @average_foil}
+					render :xml => {:average => @average , :img => card.pic.url, :average_foil => @average_foil}
 				end
 			end
 		end

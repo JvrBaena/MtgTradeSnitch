@@ -42,7 +42,7 @@ namespace :deploy do
   desc "Updates the symlink for config files to the just deployed release."
   task :symlink_configs do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/public/system #{release_path}/public/system"
+    run "ln -nfs #{shared_path}/system #{release_path}/public/system"
   end
 
   task :bootstrap do
