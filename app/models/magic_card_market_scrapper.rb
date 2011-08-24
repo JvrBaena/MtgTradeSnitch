@@ -2,15 +2,15 @@ class MagicCardMarketScrapper
 	
 	def self.search(doc)
 		result ={}
-		several = doc.css('.navBarTable .virgin') if doc.present? #tag de varios
+		several = doc.css('.SearchTable') if doc.present? #tag de varios
 		if several.present?
 			cols = %w[card expansion rarity link]
-			trs = doc.css('.mainFrame .outerRight .nestedContent tr')
+			trs = doc.css('.SearchTable tr')
 			versions = trs.collect do |tr|
 				props = {}
 				tr.children.each do |td|
 					props[cols[0]] = td.at_css('a').text if td.at_css('a').present?
-					props[cols[1]] = td.at_css('.expansionIcon')["alt"] if td.at_css('.expansionIcon').present?
+					props[cols[1]] = td.at_css('.expansionIcon').attribute('onmouseover').value.gsub("showMsgBox('",'').gsub("')",'') if td.at_css('.expansionIcon').present?
 					props[cols[2]] = td.at_css('.icon')["alt"] if td.at_css('.icon').present?
 					props[cols[3]] = td.at_css('a')["href"] if td.at_css('a').present?
 				end
