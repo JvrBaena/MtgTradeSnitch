@@ -16,6 +16,7 @@ class MagicCardMarketScrapper
 				end
 				props
 			end
+			versions << "" #APAÑO HASTA QUE SAQUEMOS VERSIÓN NUEVA!!!!
 			result["several"]= several
 			result["versions"]= versions
 		else
