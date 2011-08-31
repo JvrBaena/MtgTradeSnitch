@@ -35,7 +35,7 @@ class MagicCardMarketScrapper
 				end
 				props
 			end
-			img = doc.css('.bottomRow .darkBorder').present? ? doc.css('.bottomRow .darkBorder').last["src"] : "http://tcgimages.eu/img/cardImageNotAvailable.jpg"
+			img = doc.css('.prodImage img').present? ? doc.css('.prodImage img').last["src"] : "http://tcgimages.eu/img/cardImageNotAvailable.jpg"
 			
 			result["prices"]= prices
 			result["img"]= img
